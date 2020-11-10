@@ -11,7 +11,7 @@ class MoodySounds extends StatelessWidget {
     final player = AudioCache();
     player.play('$s$a.wav');
   }
-  Expanded buildKey(String b, Color s,int a)
+  Expanded buildKey(String b, Color s)
   {
 
     return Expanded(
@@ -41,30 +41,120 @@ class MoodySounds extends StatelessWidget {
           title: Text("Moody Sounds"),
         ),
 
-        body: SafeArea(
+        body: new GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10.0,
+          mainAxisSpacing: 10.0,
+          shrinkWrap: true,
+
+          children: <Widget>[
+            new Container(
+              
+                child: new Card(
+                    child : new Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                        Center(child: Text('Mysterious',
+
+                        )),
+                        buildKey('mysterious',Colors.orange),
 
 
-          child: Container(
-            width: 1000,
+            ],
 
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-
-                buildKey('cranky',Colors.red,1),
-                buildKey('mysterious',Colors.orange,2),
-                buildKey('sad',Colors.yellow,3),
-                buildKey('happy',Colors.green,4),
-                buildKey('mysterious',Colors.teal,5),
-                buildKey('energetic',Colors.blue,6),
-                buildKey('calm',Colors.purple,7),
-              ],
+        ),
             ),
+            ),
+            new Container(
+              child: new Card(
+                child : new Column(
+
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+
+                    Center(child: Text('Sad',
+
+                    )),
+                     buildKey('sad',Colors.yellow),
+
+
+                  ],
+
+                ),
+              ),
+            ),
+            new Container(
+              child: new Card(
+                child : new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Center(child: Text('Happy',
+
+                    )),
+
+                     buildKey('happy',Colors.green),
+
+
+                  ],
+
+                ),
+              ),
+            ),
+            new Container(
+              child: new Card(
+                child : new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Center(child: Text('Mysterious',
+
+                    )),
+                  buildKey('mysterious',Colors.teal),
+
+
+                  ],
+
+                ),
+              ),
+            ),
+            new Container(
+              child: new Card(
+
+                child : new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+
+                    Center(child: Text('Energetic',
+
+                    )),
+                     buildKey('energetic',Colors.blue),
+
+
+                  ],
+
+                ),
+              ),
+            ),
+            new Container(
+              child: new Card(
+                child : new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Center(child: Text('Calm',
+
+                    )),
+                      buildKey('calm',Colors.purple),
+
+                  ],
+
+                ),
+              ),
+            ),
+          ]
+        ),
 
 
           ),
-        ),
-      ),
+
     );
   }
 }
