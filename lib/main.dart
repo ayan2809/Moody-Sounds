@@ -1,163 +1,104 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'reusable_card.dart';
+
 void main() => runApp(MoodySounds());
 
 class MoodySounds extends StatelessWidget {
-
-
-  void playSound(String s){
-    int a=Random().nextInt(5);
+  void playSound(String s) {
+    int a = Random().nextInt(5);
     final player = AudioCache();
     player.play('$s$a.wav');
   }
-  Expanded buildKey(String b, Color s)
-  {
-
-    return Expanded(
-
-      child:FlatButton (
-
-        color: s ,
-
-        onPressed: (){
-          playSound(b);
-
-        },
-
-      ),
-    );
-  }
-
-
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text("Moody Sounds"),
-        ),
-
-        body: new GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 10.0,
-          shrinkWrap: true,
-
+        home: Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text("Moody Sounds"),
+      ),
+      body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            new Container(
-              
-                child: new Card(
-                    child : new Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                        Center(child: Text('Mysterious',
-
-                        )),
-                        buildKey('mysterious',Colors.orange),
-
-
-            ],
-
-        ),
-            ),
-            ),
-            new Container(
-              child: new Card(
-                child : new Column(
-
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-
-                    Center(child: Text('Sad',
-
-                    )),
-                     buildKey('sad',Colors.yellow),
-
-
-                  ],
-
-                ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(
+                    child: ResusableCard(
+                      onPress: () {
+                        playSound('mysterious');
+                      },
+                      colour: Colors.orange,
+                      cardChild: 'Mysterious',
+                    ),
+                  ),
+                  Expanded(
+                    child: ResusableCard(
+                      onPress: () {
+                        playSound('sad');
+                      },
+                      colour: Colors.yellow,
+                      cardChild: 'Sad',
+                    ),
+                  ),
+                ],
               ),
             ),
-            new Container(
-              child: new Card(
-                child : new Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Center(child: Text('Happy',
-
-                    )),
-
-                     buildKey('happy',Colors.green),
-
-
-                  ],
-
-                ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(
+                    child: ResusableCard(
+                      onPress: () {
+                        playSound('happy');
+                      },
+                      colour: Colors.green,
+                      cardChild: 'Happy',
+                    ),
+                  ),
+                  Expanded(
+                    child: ResusableCard(
+                      onPress: () {
+                        playSound('cranky');
+                      },
+                      colour: Colors.teal,
+                      cardChild: 'Cranky',
+                    ),
+                  ),
+                ],
               ),
             ),
-            new Container(
-              child: new Card(
-                child : new Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Center(child: Text('Mysterious',
-
-                    )),
-                  buildKey('mysterious',Colors.teal),
-
-
-                  ],
-
-                ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(
+                    child: ResusableCard(
+                      onPress: () {
+                        playSound('energetic');
+                      },
+                      colour: Colors.blue,
+                      cardChild: 'Energetic',
+                    ),
+                  ),
+                  Expanded(
+                    child: ResusableCard(
+                      onPress: () {
+                        playSound('calm');
+                      },
+                      colour: Colors.purple,
+                      cardChild: 'Calm',
+                    ),
+                  ),
+                ],
               ),
             ),
-            new Container(
-              child: new Card(
-
-                child : new Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-
-                    Center(child: Text('Energetic',
-
-                    )),
-                     buildKey('energetic',Colors.blue),
-
-
-                  ],
-
-                ),
-              ),
-            ),
-            new Container(
-              child: new Card(
-                child : new Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Center(child: Text('Calm',
-
-                    )),
-                      buildKey('calm',Colors.purple),
-
-                  ],
-
-                ),
-              ),
-            ),
-          ]
-        ),
-
-
-          ),
-
-    );
+          ]),
+    ));
   }
 }
-
-
-
